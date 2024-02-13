@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="el" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Ψηφιακά μαθησιακά αντικείμενα. Εκπαιδευτικός Όμιλος Πουκαμισάς"
+    />
+    <meta
+      name="keywords"
+      content="ψηφιακά, μαθησιακά, αντικείμενα, Όμιλος, Πουκαμισάς"
+    />
+    <meta name="author" content="Kostas Zotos, Zoi Papamichail" />
+
+    <!-- ΨΜΑ TODO: Ανανέωση τίτλου -->
+    <title>ΨΜΑ Template</title>
+
+    <!-- Facebook -->
+    <!-- meta property="og:title" content=""/>
+		<meta property="og:image" content=""/>
+		<meta property="og:url" content=""/>
+		<meta property="og:site_name" content=""/>
+		<meta property="og:description" content=""/ -->
+
+    <!-- Favicon -->
+    <!-- link rel="icon" type="image/png" sizes="48x48" href="./favicon_48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_32x32.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./apple-icon-114x114.png" -->
+
+    <!-- Fonts -->
+    <!-- link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" -->
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./lib/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./lib/css/bootstrap-icons.min.css" />
+    <!-- link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" -->
+
+    <!-- Main style -->
+    <link rel="stylesheet" href="./app/css/style.css" />
+  </head>
+
+  <body>
+    <div id="outer_container" class="container-xl">
+      <header id="header" class="row p-2">
+        <div id="title" class="col-8 pt-2">
+          <!-- ΨΜΑ TODO: Ανανέωση τίτλου -->
+          <h1 class="fw-bold">Συμπληρώνω το ζευγαράκι του 10</h1>
+        </div>
+
+        <div id="controls" class="col-4 pt-2">
+          <!-- Credits - Συντελεστές -->
+          <a
+            href="#"
+            class="ms-2 float-end btn-move-down"
+            role="button"
+            aria-label="Συντελεστές - Credits"
+            data-bs-toggle="modal"
+            data-bs-target="#creditsModal"
+          >
+            <i
+              class="bi bi-info-circle"
+              id="info_icon"
+              role="img"
+              aria-label="Συντελεστές - Credits"
+            ></i>
+          </a>
+
+          <!-- Προβολή Βοήθειας - Help Screen -->
+          <a
+            href="#"
+            class="float-end btn-move-down"
+            role="button"
+            aria-label="Προβολή Βοήθειας - Help Screen"
+            data-bs-toggle="modal"
+            data-bs-target="#helpModal"
+          >
+            <i
+              class="bi bi-question-circle"
+              id="help_icon"
+              role="img"
+              aria-label="Προβολή Βοήθειας - Help Screen"
+            ></i>
+          </a>
+        </div>
+      </header>
+
+      <main id="main" class="row">
+        <div id="canvas_container" class="col w-100">
+          <div id="inner_container" class="row">
+            <div id="container_wrapper" class="col" tabindex="0" style="">
+              <!-- NOTE: style here is for editting-->
+
+              <!-- ΨΜΑ TODO: Ανανέωση κειμένου -->
+							
+              <p
+              id="introParagraph"
+              tabindex="0"
+              title="Εισαγωγικό κείμενο"
+              aria-label="Εισαγωγικό κείμενο"
+            >
+              Στο πάνω κουτάκι εμφανίζεται το 10 και ένας τυχαίος αριθμός στο
+              κάτω και ο μαθητής συμπληρώνει τον αριθμό που κάνει το ζευγαράκι
+              με το 10
+            </p>
+            <p
+              id="message"
+              class="text-center fw-bold fs-5"
+              role="alert"
+            ></p>
+
+            <button
+              class="btn btn-outline-success mx-auto d-block"
+              id="reloadBtn"
+            >
+              Έλεγχος και Επανάληψη
+            </button>
+            <table class="mt-3 mx-auto">
+              <tr>
+                <td
+                  colspan="2"
+                  tabindex="0"
+                  title="Ο αριθμός 10"
+                  aria-label="Ο αριθμός 10"
+                >
+                  10
+                </td>
+              </tr>
+              <tr>
+                <td
+                  id="cell1"
+                  tabindex="0"
+                  title="Κελί που θα σύρετε τον αριθμό"
+                  aria-label="Κελί που θα σύρετε τον αριθμό"
+                ></td>
+                <td
+                  id="cell2"
+                  tabindex="0"
+                  title="Κελί με τον τυχαίο αριθμό"                    
+                ></td>
+              </tr>
+            </table>
+
+            <div class="mt-3 text-center">
+              <div
+                class="draggable"
+                id="1"
+                tabindex="0"
+                title="Αριθμός 1"
+                aria-label="Αριθμός 1"
+              >
+                1
+              </div>
+              <div
+                class="draggable"
+                id="2"
+                tabindex="0"
+                title="Αριθμός 2"
+                aria-label="Αριθμός 2"
+              >
+                2
+              </div>
+              <div
+                class="draggable"
+                id="3"
+                tabindex="0"
+                title="Αριθμός 3"
+                aria-label="Αριθμός 3"
+              >
+                3
+              </div>
+              <div
+                class="draggable"
+                id="4"
+                tabindex="0"
+                title="Αριθμός 4"
+                aria-label="Αριθμός 4"
+              >
+                4
+              </div>
+              <div
+                class="draggable"
+                id="5"
+                tabindex="0"
+                title="Αριθμός 5"
+                aria-label="Αριθμός 5"
+              >
+                5
+              </div>
+              <div
+                class="draggable"
+                id="6"
+                tabindex="0"
+                title="Αριθμός 6"
+                aria-label="Αριθμός 6"
+              >
+                6
+              </div>
+              <div
+                class="draggable"
+                id="7"
+                tabindex="0"
+                title="Αριθμός 7"
+                aria-label="Αριθμός 7"
+              >
+                7
+              </div>
+              <div
+                class="draggable"
+                id="8"
+                tabindex="0"
+                title="Αριθμός 8"
+                aria-label="Αριθμός 8"
+              >
+                8
+              </div>
+              <div
+                class="draggable"
+                id="9"
+                tabindex="0"
+                title="Αριθμός 9"
+                aria-label="Αριθμός 9"
+              >
+                9
+              </div>
+            </div>
+
+              <!-- ΨΜΑ TODO: Ανανέωση κειμένου END -->
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ΨΜΑ Help Screen (popup) -->
+      <div class="modal fade" id="helpModal" tabindex="-1" aria-hidden="true">
+        <div
+          class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
+        >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="helpModalLabel">
+                Οθόνη Βοήθειας
+              </h1>
+              <button
+                type="button"
+                class="btn-close btn-move-down"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- ΨΜΑ TODO: Προσθήκη - αντικατάσταση κειμένου (ή HTML) με πληροφορίες, οδηγίες ή βοήθεια -->
+              <h2 class="fw-bold">Εισαγωγικό σημείωμα</h2>
+              <p class="text-just">
+                Στο πάνω κουτάκι εμφανίζεται το 10 και ένας τυχαίος αριθμός στο
+              κάτω και ο μαθητής συμπληρώνει τον αριθμό που κάνει το ζευγαράκι
+              με το 10
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm px-3 py-2 btn-move-down"
+                data-bs-dismiss="modal"
+              >
+                Κλείσιμο
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ΨΜΑ Credits (popup) -->
+      <div
+        class="modal fade"
+        id="creditsModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
+        >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="creditsModalLabel">
+                Καρτέλα Συντελεστών
+              </h1>
+              <button
+                type="button"
+                class="btn-close btn-move-down"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body" id="creditsModalBody">
+              <!-- Credits Here -->
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm px-3 py-2 btn-move-down"
+                data-bs-dismiss="modal"
+              >
+                Κλείσιμο
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END OF: id="outer_container" -->
+
+    <script>
+      let credits = []; // DO NOT DELETE OR MODIFY THIS LINE
+
+      credits = [
+        [
+          `Τίτλος ΨΜΑ`, // Τίτλος
+        ],
+        [
+          `1.0`, // Έκδοση
+        ],
+        [
+          `31.01.2024`, // Ημερομηνία Δημιουργίας
+        ],
+        [
+          `<<όλη η συγγραφική ομάδα>>`, // Συντελεστές - Δημιουργία & Παιδαγωγική Σχεδίαση
+          `Εκδόσεις Πουκαμισάς`, // Συντελεστές - Τεχνική Σχεδίαση & Ανάπτυξη
+        ],
+        [
+          `logo.jpg`, // Λογότυπο Έργου & Λογότυπο Πλαισίου Χρηματοδότησης
+        ],
+      ];
+
+      // END OF: credits
+    </script>
+
+    <!-- Add blocking scripts here at the end of body -->
+    <!-- jQuery -->
+    <script src="./lib/js/jquery-3.7.0.min.js"></script>
+    <script src="lib/js/jquery-ui.min.js"></script>
+    <script>
+      // Function to generate a random number between 1 and 9 (inclusive)
+      function getRandomNumber() {
+        return Math.floor(Math.random() * 9) + 1;
+      }
+
+      // Function to set dynamic widths for the second row cells using jQuery
+      function setDynamicWidths() {
+        var randomWidth = getRandomNumber();
+        var cell1Width = 100 - randomWidth * 10;
+        var cell2Width = randomWidth * 10;
+
+        // Set the width dynamically for Cell 1 using jQuery
+        $("#cell1").css("width", 100 - randomWidth * 10 + "%");
+
+    // Generate a random number and set it as the text for Cell 2
+        var randomNumber = getRandomNumber();
+    $("#cell2")
+        .css("width", randomWidth * 10 + "%")
+        .text(randomWidth)
+        .attr("aria-label", "Κελί με τον τυχαίο αριθμό " + randomNumber);
+      }
+
+
+
+      // Function to check the sum and display the message
+      function checkSum() {
+    var cell1 = $("#cell1");
+    var cell2Value = parseInt($("#cell2").text());
+
+    // Hide the paragraph below when the reload button is clicked
+    $("#introParagraph").hide();
+
+    if (cell1.children().length > 0) {
+        // A draggable element is present in Cell 1
+        var droppedNumber = parseInt(cell1.children().text());
+        var sum = droppedNumber + cell2Value;
+
+        if (sum === 10) {
+            // The sum is correct, show a "Correct" message with smiley face and success class
+            $("#message").html(
+                "<img src='resources/smiley.jpg' alt='χαμογελαστή φατσούλα ' style='width: 30px; height: 30px;git '> Μπράβο σωστή επιλογή, συνέχισε έτσι"
+            ).removeClass("text-danger").addClass("text-success");
+        } else {
+            // The sum is incorrect, show an error message with alert class
+            $("#message").html(
+                "Ουπς, δες τι δεν ταιριάζει και προσπάθησε ξανά,</br> πιο προσεκτικά αυτή τη φορά."
+            ).removeClass("text-success").addClass("text-danger");
+        }
+    } else {
+        // No draggable element in Cell 1, show a message with alert class
+        $("#message").html(
+            "Παρακαλώ σύρετε ένα κουτάκι </br>με αριθμό στο κενό κελί."
+        ).removeClass("text-success").addClass("text-danger");
+    }
+}
+
+
+      // Call the function to set dynamic widths when the document is ready
+      $(document).ready(function () {
+        setDynamicWidths();
+
+        // Make the draggable elements draggable
+        $(".draggable").draggable({
+          revert: "invalid",
+          helper: "clone",
+        });
+
+        //Make the droppable area accept the draggable elements
+        $("#cell1").droppable({
+          accept: ".draggable",
+          drop: function (event, ui) {
+            // Clone the draggable element and append it to Cell 1
+            var clonedElement = ui.helper.clone();
+            $(this).empty().append(clonedElement);
+          },
+        });
+
+        // var draggedElement; // Declare a variable to store the dragged element
+
+        // $("#cell1").droppable({
+        //   accept: ".draggable",
+        //   drop: function (event, ui) {
+        //     // Clone the draggable element and store it in the variable
+        //     draggedElement = ui.helper.clone();
+
+        //     // Append the cloned element to Cell 1
+        //     $(this).empty().append(draggedElement);
+        //   },
+        // });
+
+        // Reload button functionality
+        $("#reloadBtn").click(function () {
+          // Call the function to check the sum and display the message
+          checkSum();
+          // Delay the page reload b
+          setTimeout(function () {
+            location.reload();
+          }, 5000);
+        });
+      });
+    </script>
+
+    <!-- Bootstrap -->
+    <script src="./lib/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Main -->
+    <!-- script src="./app/js/index.js"></script -->
+
+    <script>
+      // ----------- DO NOT DELETE THE FOLLOWING CODE --------------
+
+      // -------------- Credits -------------
+      $("#info_icon")
+        .parent()
+        .on("click", function () {
+          let credits_data = credits;
+          let credits_html = "";
+
+          credits_title = $.trim(credits_data[0][0]);
+          credits_version = $.trim(credits_data[1][0]);
+          credits_date = $.trim(credits_data[2][0]);
+          credits_role_1 = $.trim(credits_data[3][0]);
+          credits_role_2 = $.trim(credits_data[3][1]);
+          credits_role_3 = $.trim(credits_data[3][2]);
+          credits_role_4 = $.trim(credits_data[3][3]);
+          credits_logo = $.trim(credits_data[4][0]);
+
+          credits_html += `<div>
+            <p><b>Τίτλος:</b> ${credits_title}</p>
+            <p><b>Έκδοση:</b> ${credits_version}</p>
+            <p><b>Ημερομηνία Δημιουργίας:</b> ${credits_date}</p>
+            <p><b>Συντελεστές</b></p>
+            <ul style="list-style-type: none;">
+              <li><p><b>Δημιουργία - Παιδαγωγική Σχεδίαση:</b> ${credits_role_1}</p></li>
+              <li><p><b>Τεχνική Σχεδίαση - Ανάπτυξη:</b> ${credits_role_2}</p></li>
+            </ul>
+            <img src="app/images/${credits_logo}" alt="Λογότυπο Έργου και Πλαισίου Χρηματοδότησης" style="width: 100%"/>
+          </div>`;
+
+          $("#creditsModalBody").empty().html(credits_html);
+        });
+
+      // -------------- Dimensions and font size -------------
+
+      let resolutionA = 16;
+      let resoutionB = 9;
+      let fontSize = 1;
+      // let global_scale = 1;
+
+      // $("#outer_container").css({ maxWidth: 1280 + "px" });
+
+      $("#inner_container a").attr("target", "_blank");
+
+      $(window).resize(function () {
+        // Adjust canvas container dimensions (especially height) on window resize
+
+        // Window Dimensions
+        let windowWidth = $(window).width();
+        let windowHeight = $(window).height() - $("#header").outerHeight(); // - 2;
+
+        // Adjust width
+        let maxWidth = 1280;
+        let width = $("#main").width();
+
+        if (width < maxWidth) {
+          $("#outer_container").css({ width: "96%" });
+          width = $("#main").width();
+        }
+
+        // Adjust resolution (landscape OR portrait)
+        if (windowWidth > windowHeight) {
+          resolutionA = 16;
+          resolutionB = 9;
+        } else if (windowWidth < windowHeight) {
+          resolutionA = 9;
+          resolutionB = 16;
+        }
+
+        // Adjust height
+        let height =
+          (width * resolutionB) / resolutionA - $("#header").outerHeight() + 60;
+
+        let maxheight = Math.min(windowHeight, maxWidth);
+        if (height > maxheight) {
+          height = maxheight;
+          width = (height * resolutionA) / resolutionB;
+          $("#outer_container").css({ width: width + "px" });
+        }
+
+        // $("#canvas_container").css({ height: height + "px" });
+
+        let tHeight = height - $("#inner_container").position().top + 20;
+        $("#inner_container").css({ height: tHeight + "px" });
+
+        let vHeight = height - $("#canvas_container").position().top + 30;
+        $("#canvas_container").css({ height: vHeight + "px" });
+
+        // $('#title').html(width + ', ' + height)
+
+        // Adjust font size (dynamically set size based on screen size)
+        fontSize = 0.018 * Math.min(windowWidth, windowHeight) + 6;
+        $("*")
+          .not("video, audio, track")
+          .css({
+            fontSize: fontSize + "px",
+            lineHeight: fontSize * 1.3 + "px",
+          });
+        $("h1, h2").css({ fontSize: fontSize * 1.1 + "px" });
+        $("h3, h4").css({ fontSize: fontSize + "px" });
+        $("h5, h6, p, i, a, b, ol, ul, li").css({
+          fontSize: fontSize * 0.9 + "px",
+        });
+        $(".bi").css({ fontSize: fontSize * 1.8 + "px" });
+
+        /*
+        // Adjust icons' size on window resize
+        let global_scale = Math.max(width / maxWidth, 0.72);
+        $(".icons").css({
+          width: 38 * global_scale + "px",
+          height: 38 * global_scale + "px",
+        });
+        */
+      });
+
+      $(window).resize();
+
+      $(document).ready(function () {
+        $(window).resize();
+      });
+    </script>
+  </body>
+</html>
