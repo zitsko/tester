@@ -86,8 +86,6 @@ ol li {
 }
 */
 
-
-
 table {
 	border-collapse: collapse;
 	width: 60%;
@@ -100,7 +98,7 @@ td {
 	text-align: center;
 }
 
-.draggable {
+.box {
   cursor: grab;
   display: inline-block;
   margin: 7px;
@@ -114,3 +112,4 @@ td {
 	outline: 2px solid #063c75;
   }
 
+ 
